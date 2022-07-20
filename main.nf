@@ -1,3 +1,6 @@
+params.result_dir = "$PWD"
+params.result_file_name = "pc_results.rds"
+
 // STEP 0: Determine the dataset-method pairs; put the dataset method pairs into a map, and put the datasets into an array
 GroovyShell shell = new GroovyShell()
 evaluate(new File(params.data_method_pair_file))
@@ -53,22 +56,33 @@ process obtain_pc_pairs {
 process run_method {
   queue "$queue"
   // memory "$ram GB"
-  debug true
 
   tag "$dataset+$method"
 
-  //output:
-  //file 'raw_result.rds' into raw_results_ch
+  output:
+  file 'raw_result.rds'
 
   input:
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
-  //"""
-  //run_method.R $dataset $idx $method ${params.grna_modality} $opt_args
-  //"""
+  """
+  run_method.R $dataset $idx $method ${params.grna_modality} $opt_args
+  """
+}
+
+
+process combine_results {
+  queue 'short.q'
+  publishDir params.result_dir, mode: 'copy'
+
+  output:
+  file "$params.result_file_name"
+
+  input:
+  file 'raw_result'
 
   """
-  echo $dataset $idx $method ${params.grna_modality} $opt_args
+  collect_results.R $params.result_file_name raw_result*
   """
 }
 
@@ -102,4 +116,7 @@ workflow {
   // step 2: run method
   run_method(method_input)
 
+  // step 3: combine results
+  raw_results = run_method.out.collect()
+  combine_results(raw_results)
 }

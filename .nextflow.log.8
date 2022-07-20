@@ -1,48 +1,135 @@
-Jul-19 19:06:26.909 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /Users/timbarry/research_code//pc-grna-pipeline/main.nf --data_method_pair_file /Users/timbarry/research_code//sceptre2-manuscript/param_files/data_method_pairs_pc.groovy --grna_modality assignment
-Jul-19 19:06:27.066 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.3
-Jul-19 19:06:27.092 [main] DEBUG nextflow.config.ConfigBuilder - Found config home: /Users/timbarry/.nextflow/config
-Jul-19 19:06:27.095 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/timbarry/.nextflow/config
-Jul-19 19:06:27.132 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Jul-19 19:06:27.962 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
-Jul-19 19:06:27.981 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/timbarry/research_code/pc-grna-pipeline/main.nf` [pedantic_joliot] DSL2 - revision: 277dcd4911
-Jul-19 19:06:27.997 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/timbarry/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
-Jul-19 19:06:27.998 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-19 19:06:28.010 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-19 19:06:28.011 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-19 19:06:28.015 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
-Jul-19 19:06:28.026 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-19 19:06:28.104 [main] DEBUG nextflow.Session - Session uuid: 42f72c15-3012-4c54-8859-be27973b5e8e
-Jul-19 19:06:28.104 [main] DEBUG nextflow.Session - Run name: pedantic_joliot
-Jul-19 19:06:28.105 [main] DEBUG nextflow.Session - Executor pool size: 8
-Jul-19 19:06:28.131 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-20 13:10:56.274 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /Users/timbarry/research_code//pc-grna-pipeline/main.nf --data_method_pair_file /Users/timbarry/research_code//sceptre2-manuscript/param_files/data_method_pairs_pc.groovy --grna_modality assignment
+Jul-20 13:10:56.432 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.3
+Jul-20 13:10:56.459 [main] DEBUG nextflow.config.ConfigBuilder - Found config home: /Users/timbarry/.nextflow/config
+Jul-20 13:10:56.464 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/timbarry/.nextflow/config
+Jul-20 13:10:56.493 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-20 13:10:57.375 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-20 13:10:57.404 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/timbarry/research_code/pc-grna-pipeline/main.nf` [awesome_keller] DSL2 - revision: e099eee064
+Jul-20 13:10:57.422 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/timbarry/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Jul-20 13:10:57.424 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 13:10:57.438 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 13:10:57.440 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 13:10:57.444 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-20 13:10:57.456 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 13:10:57.536 [main] DEBUG nextflow.Session - Session uuid: ead1291c-8d25-48d6-b3a3-9133d1c01ca1
+Jul-20 13:10:57.536 [main] DEBUG nextflow.Session - Run name: awesome_keller
+Jul-20 13:10:57.537 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-20 13:10:57.583 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 22.04.3 build 5703
   Created: 18-05-2022 19:22 UTC (15:22 EDT)
   System: Mac OS X 10.16
   Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 1.8.0_242-b08
   Encoding: UTF-8 (UTF-8)
-  Process: 87683@vagelos-ve703-14679.apn.wlan.private.upenn.edu [10.102.249.108]
-  CPUs: 8 - Mem: 16 GB (500.1 MB) - Swap: 2 GB (1.4 GB)
-Jul-19 19:06:28.149 [main] DEBUG nextflow.Session - Work-dir: /Users/timbarry/research_offsite/work [Mac OS X]
-Jul-19 19:06:28.167 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-19 19:06:28.178 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-19 19:06:28.218 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-19 19:06:28.233 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
-Jul-19 19:06:28.310 [main] DEBUG nextflow.Session - Session start invoked
-Jul-19 19:06:28.883 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-19 19:06:29.093 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jul-19 19:06:29.094 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jul-19 19:06:29.100 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Jul-19 19:06:29.107 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=16 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
-Jul-19 19:06:29.321 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: obtain_pc_pairs
-Jul-19 19:06:29.321 [main] DEBUG nextflow.Session - Ignite dataflow network (3)
-Jul-19 19:06:29.322 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > obtain_pc_pairs
-Jul-19 19:06:29.323 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
-Jul-19 19:06:29.323 [main] DEBUG nextflow.Session - Session await
-Jul-19 19:06:29.482 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jul-19 19:06:29.488 [Task submitter] INFO  nextflow.Session - [aa/834f6d] Submitted process > obtain_pc_pairs
-Jul-19 19:06:29.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: obtain_pc_pairs; status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/aa/834f6d9daf5c9bbe2985e34c142836]
-Jul-19 19:06:29.806 [main] DEBUG nextflow.Session - Session await > all process finished
-Jul-19 19:06:29.811 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-19 19:06:30.142 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=253ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=2 GB; ]
-Jul-19 19:06:30.271 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-19 19:06:30.298 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Process: 66000@vagelos-ve703-14679.apn.wlan.private.upenn.edu [10.102.249.108]
+  CPUs: 8 - Mem: 16 GB (5.1 GB) - Swap: 2 GB (614.8 MB)
+Jul-20 13:10:57.599 [main] DEBUG nextflow.Session - Work-dir: /Users/timbarry/research_offsite/work [Mac OS X]
+Jul-20 13:10:57.621 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 13:10:57.635 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 13:10:57.672 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-20 13:10:57.692 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-20 13:10:57.800 [main] DEBUG nextflow.Session - Session start invoked
+Jul-20 13:10:58.390 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 13:10:58.572 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 13:10:58.573 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 13:10:58.580 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-20 13:10:58.588 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=16 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-20 13:10:58.804 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 13:10:58.804 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 13:10:58.812 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: run_method, obtain_pc_pairs
+Jul-20 13:10:58.813 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Jul-20 13:10:58.813 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > obtain_pc_pairs
+Jul-20 13:10:58.814 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_method
+Jul-20 13:10:58.814 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-20 13:10:58.814 [main] DEBUG nextflow.Session - Session await
+Jul-20 13:10:58.972 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:58.978 [Task submitter] INFO  nextflow.Session - [27/c7c55a] Submitted process > obtain_pc_pairs
+Jul-20 13:10:59.324 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: obtain_pc_pairs; status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/27/c7c55ac966fda0a8665b1342d18cd8]
+Jul-20 13:10:59.386 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.387 [Task submitter] INFO  nextflow.Session - [29/4203c5] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.604 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/29/4203c528930ed9db10d900bcc99122]
+Jul-20 13:10:59.612 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.614 [Task submitter] INFO  nextflow.Session - [9d/754116] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+seurat_de)
+Jul-20 13:10:59.620 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.621 [Task submitter] INFO  nextflow.Session - [8f/39eebc] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.637 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.639 [Task submitter] INFO  nextflow.Session - [2f/976cc9] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+nb_regression)
+Jul-20 13:10:59.645 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.646 [Task submitter] INFO  nextflow.Session - [19/208f23] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.653 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.659 [Task submitter] INFO  nextflow.Session - [11/44daa3] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.668 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.668 [Task submitter] INFO  nextflow.Session - [64/706dc4] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.673 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.674 [Task submitter] INFO  nextflow.Session - [cf/f30661] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.678 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.679 [Task submitter] INFO  nextflow.Session - [18/ddd7b8] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.726 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: run_method (schraivogel/ground_truth_tapseq/gene+seurat_de); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/9d/7541161782ffff548c851788edbec2]
+Jul-20 13:10:59.729 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/8f/39eebc1ec7a64af37b116620899cd6]
+Jul-20 13:10:59.732 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.732 [Task submitter] INFO  nextflow.Session - [96/831363] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.734 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: run_method (schraivogel/ground_truth_tapseq/gene+nb_regression); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/2f/976cc933db19cc1d7302eb4e355ead]
+Jul-20 13:10:59.737 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/19/208f231cf3436d3b54169c005c45df]
+Jul-20 13:10:59.740 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.741 [Task submitter] INFO  nextflow.Session - [c1/dfa0e8] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.743 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/11/44daa309c7f05cb8f9bad95af5c653]
+Jul-20 13:10:59.749 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/64/706dc4e40485b1a567732427fda450]
+Jul-20 13:10:59.752 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.752 [Task submitter] INFO  nextflow.Session - [da/62a095] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.753 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/cf/f30661677b5edb7247f5e89b8c1efc]
+Jul-20 13:10:59.759 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/18/ddd7b86d12167afd298dd1c3d365f6]
+Jul-20 13:10:59.763 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.763 [Task submitter] INFO  nextflow.Session - [c8/b769ae] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.769 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.769 [Task submitter] INFO  nextflow.Session - [79/39dd7a] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.784 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.785 [Task submitter] INFO  nextflow.Session - [51/9b0399] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.793 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.794 [Task submitter] INFO  nextflow.Session - [eb/cf0e4a] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.803 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.804 [Task submitter] INFO  nextflow.Session - [71/2390f6] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.819 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/96/83136378f78692c86cd8cccd9d3805]
+Jul-20 13:10:59.829 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/c1/dfa0e8981791842d5fc6e2fac0f175]
+Jul-20 13:10:59.832 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.833 [Task submitter] INFO  nextflow.Session - [80/72d218] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.843 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.843 [Task submitter] INFO  nextflow.Session - [aa/25a8d0] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.845 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/da/62a09599e3a352df60f38313925080]
+Jul-20 13:10:59.851 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/c8/b769ae8b1112d12ca132d7506620de]
+Jul-20 13:10:59.865 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/79/39dd7a95018d4e2b091651288f2000]
+Jul-20 13:10:59.871 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.871 [Task submitter] INFO  nextflow.Session - [76/66f156] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.878 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.878 [Task submitter] INFO  nextflow.Session - [23/367703] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 20; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/51/9b0399769e69e2e84942982c83d0a9]
+Jul-20 13:10:59.892 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.894 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 22; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/eb/cf0e4aeb1f7b5ac6e627541ec7f4ff]
+Jul-20 13:10:59.909 [Task submitter] INFO  nextflow.Session - [4a/9ad828] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.909 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/71/2390f66864681b17915cb97b426417]
+Jul-20 13:10:59.921 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.925 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/80/72d2183467ecd78950eebac4e389cd]
+Jul-20 13:10:59.925 [Task submitter] INFO  nextflow.Session - [8d/2b886b] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.932 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.932 [Task submitter] INFO  nextflow.Session - [72/003e31] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.936 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 24; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/aa/25a8d0d467766d9aa4c24967c5e85e]
+Jul-20 13:10:59.942 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.944 [Task submitter] INFO  nextflow.Session - [b4/aa4f57] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.956 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 21; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/76/66f156f246a2056bab50b4cec73a42]
+Jul-20 13:10:59.957 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.957 [Task submitter] INFO  nextflow.Session - [cd/5ace98] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method)
+Jul-20 13:10:59.967 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.967 [Task submitter] INFO  nextflow.Session - [b6/66494b] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.973 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 13:10:59.974 [Task submitter] INFO  nextflow.Session - [a5/1f8199] Submitted process > run_method (schraivogel/ground_truth_tapseq/gene+mimosca)
+Jul-20 13:10:59.977 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/23/36770375e0bb762b2917b98b5c57b5]
+Jul-20 13:10:59.980 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 26; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/4a/9ad828520d409a0d1a0399afa46469]
+Jul-20 13:10:59.997 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/8d/2b886bb8243b60f410d9cbfd9a1550]
+Jul-20 13:11:00.010 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 23; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/72/003e31eab6888f954d97aaad399ed0]
+Jul-20 13:11:00.020 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 25; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/b4/aa4f5745c3032f7d53bbeaeb327c2a]
+Jul-20 13:11:00.041 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 28; name: run_method (schraivogel/ground_truth_tapseq/gene+schraivogel_method); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/cd/5ace98d81daf8ba896e7ce57513162]
+Jul-20 13:11:00.044 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 27; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/b6/66494bb3692719e4e5852575fb7e7f]
+Jul-20 13:11:00.052 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 29; name: run_method (schraivogel/ground_truth_tapseq/gene+mimosca); status: COMPLETED; exit: 0; error: -; workDir: /Users/timbarry/research_offsite/work/a5/1f8199f19c741dcc1e0bf35274bea0]
+Jul-20 13:11:00.054 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-20 13:11:00.055 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-20 13:11:00.073 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=29; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=1.7s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=8; peakMemory=2 GB; ]
+Jul-20 13:11:00.253 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-20 13:11:00.286 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
