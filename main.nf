@@ -38,8 +38,6 @@ def get_vector_entry(vector, col_names, my_col_name) {
 
 // PROCESS 1: obtain
 process obtain_pc_pairs {
-  debug true
-
   queue "short.q"
   memory "2 GB"
 
@@ -52,11 +50,33 @@ process obtain_pc_pairs {
 }
 
 
+process run_method {
+  queue "$queue"
+  // memory "$ram GB"
+  debug true
+
+  tag "$dataset+$method"
+
+  //output:
+  //file 'raw_result.rds' into raw_results_ch
+
+  input:
+  tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
+
+  //"""
+  //run_method.R $dataset $idx $method ${params.grna_modality} $opt_args
+  //"""
+
+  """
+  echo $dataset $idx $method ${params.grna_modality} $opt_args
+  """
+}
+
+
 workflow {
   // step 0: get datasets and indexes
   obtain_pc_pairs()
   dataset_names_raw_ch = obtain_pc_pairs.out
-  dataset_names_raw_ch.view()
   dataset_idx_pairs = dataset_names_raw_ch.splitText().map{it.trim().split(" ")}.map{[it[0], it[1]]}
   dataset_no_idx = dataset_idx_pairs.unique({it[0]}).map{[it[0], 0]}
 
@@ -77,8 +97,9 @@ workflow {
     get_matrix_entry(data_method_ram_matrix, row_names, col_names, it[0], it[2]), // RAM
     get_vector_entry(optional_args, col_names, it[2])] // optional args
   }
-  data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples).view()
+  method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
 
   // step 2: run method
-  
+  run_method(method_input)
+
 }
