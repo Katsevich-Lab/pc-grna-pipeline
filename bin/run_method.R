@@ -7,8 +7,9 @@ dataset_name <- args[1]
 idx <- as.integer(args[2])
 method_name <- args[3]
 grna_modality <- args[4]
-if (length(args) >= 5) {
-  optional_args <- args[seq(5, length(args))]
+trial <- as.logical(args[5])
+if (length(args) >= 6) {
+  optional_args <- args[seq(6, length(args))]
 } else {
   optional_args <- NULL
 }
@@ -24,6 +25,9 @@ grna_odm <- load_dataset_modality(grna_dataset_name)
 response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs.rds"))
 if (idx > 0) {
   response_grna_group_pairs <- response_grna_group_pairs |> dplyr::slice(idx)
+}
+if (trial) {
+  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::slice(1)
 }
 
 # add additional args

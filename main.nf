@@ -1,5 +1,6 @@
 params.result_dir = "$PWD"
 params.result_file_name = "pc_results.rds"
+params.trial = "false"
 
 // STEP 0: Determine the dataset-method pairs; put the dataset method pairs into a map, and put the datasets into an array
 GroovyShell shell = new GroovyShell()
@@ -48,14 +49,16 @@ process obtain_pc_pairs {
   path 'dataset_names_raw.txt'
 
   """
-  get_pc_pairs.R $data_list_str
+  get_pc_pairs.R ${params.trial} $data_list_str
   """
 }
 
 
 process run_method {
+  debug true
+
   queue "$queue"
-  // memory "$ram GB"
+  memory "$ram GB"
 
   tag "$dataset+$method"
 
@@ -66,7 +69,7 @@ process run_method {
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
   """
-  run_method.R $dataset $idx $method ${params.grna_modality} $opt_args
+  run_method.R $dataset $idx $method ${params.grna_modality} ${params.trial} $opt_args
   """
 }
 
@@ -111,6 +114,8 @@ workflow {
     get_matrix_entry(data_method_ram_matrix, row_names, col_names, it[0], it[2]), // RAM
     get_vector_entry(optional_args, col_names, it[2])] // optional args
   }
+  data_method_pair_grouped_tuples
+
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
 
   // step 2: run method
