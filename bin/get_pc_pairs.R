@@ -4,13 +4,15 @@ sceptre2_dir <- paste0(.get_config_path("LOCAL_SCEPTRE2_DATA_DIR"), "data/")
 # Get CL args
 args <- commandArgs(trailingOnly = TRUE)
 trial <- as.logical(args[1])
-datasets <- args[seq(2, length(args))]|> unique()
+grouped <- as.logical(args[2])
+datasets <- args[seq(3, length(args))] |> unique()
 
 # loop over datasets, outputting the positive control pairs
 out <- NULL
 for (i in seq(1, length(datasets))) {
   dataset_name <- datasets[i]
-  pos_control_df <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs.rds"))
+  pos_control_df <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name),
+                                   if (grouped) "/pos_control_pairs_grouped.rds" else  "/pos_control_pairs_single.rds"))
   my_idxs <- seq(1L, nrow(pos_control_df))
   if (trial) {
     out <- c(out, paste(dataset_name, 1L))

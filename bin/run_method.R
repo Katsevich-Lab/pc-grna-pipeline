@@ -7,7 +7,7 @@ dataset_name <- args[1]
 idx <- as.integer(args[2])
 method_name <- args[3]
 grna_modality <- args[4]
-trial <- as.logical(args[5])
+grouped <- as.logical(args[5])
 if (length(args) >= 6) {
   optional_args <- args[seq(6, length(args))]
 } else {
@@ -22,16 +22,28 @@ library(lowmoi)
 response_odm <- load_dataset_modality(dataset_name)
 grna_dataset_name <- get_grna_dataset_name(dataset_name, grna_modality)
 grna_odm <- load_dataset_modality(grna_dataset_name)
-response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs.rds"))
+# update the gene-grna groups and grna ODM, if running a singleton experiment
+
+if (grouped) {
+  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs_grouped.rds"))
+} else {
+  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs_single.rds"))
+  curr_targets <- grna_odm@feature_covariates$target
+  curr_ids <- row.names(grna_odm@feature_covariates)
+  curr_ids[curr_targets == "non-targeting"] <- "non-targeting"
+  grna_odm@feature_covariates$target <- curr_ids
+  row.names(grna_odm) <- NULL
+}
+
+# if idx > 0, slice the response grna group pairs accordingly
 if (idx > 0) {
   response_grna_group_pairs <- response_grna_group_pairs |> dplyr::slice(idx)
 }
-if (trial) {
-  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::slice(1)
-}
 
 # add additional args
-to_pass_list <- list(response_odm = response_odm, grna_odm = grna_odm, response_grna_group_pairs = response_grna_group_pairs)
+to_pass_list <- list(response_odm = response_odm,
+                     grna_odm = grna_odm,
+                     response_grna_group_pairs = response_grna_group_pairs)
 if (!is.null(optional_args)) { # if there are optional arguments specified, add them to the list
   values_vect <- NULL
   names_vect <- NULL
