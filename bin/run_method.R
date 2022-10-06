@@ -32,6 +32,7 @@ if (grouped) {
   curr_ids <- row.names(grna_odm@feature_covariates)
   curr_ids[curr_targets == "non-targeting"] <- "non-targeting"
   grna_odm@feature_covariates$target <- curr_ids
+  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::rename("grna_group" = "grna_id")
   row.names(grna_odm) <- NULL
 }
 
