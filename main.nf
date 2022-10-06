@@ -61,26 +61,18 @@ process run_method {
   debug true
 
   queue "$queue"
-  // memory "$ram GB"
+  memory "$ram GB"
 
   tag "$dataset+$method"
 
-  //output:
-  //file 'raw_result.rds'
+  output:
+  file 'raw_result.rds'
 
   input:
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
-  // """
-  // run_method.R $dataset $idx $method ${params.grna_modality} ${params.grouped} $opt_args
-  // """
-
-  // """
-  // echo $dataset $idx $method ${params.grna_modality} ${params.grouped} $opt_args
-  // """
-
   """
-  echo $dataset $idx $method ${params.grna_modality} ${params.grouped} $opt_args
+  run_method.R  $dataset $idx $method ${params.grna_modality} ${params.grouped} $opt_args
   """
 }
 
@@ -134,6 +126,6 @@ workflow {
 
 
   // step 3: combine results
-  // raw_results = run_method.out.collect()
-  // combine_results(raw_results)
+  raw_results = run_method.out.collect()
+  combine_results(raw_results)
 }
