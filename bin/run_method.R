@@ -25,9 +25,9 @@ grna_odm <- load_dataset_modality(grna_dataset_name)
 # update the gene-grna groups and grna ODM, if running a singleton experiment
 
 if (grouped) {
-  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs_grouped.rds"))
+  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/pos_control_pairs_grouped.rds"))
 } else {
-  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name), "/pos_control_pairs_single.rds"))
+  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/pos_control_pairs_single.rds"))
   curr_targets <- grna_odm@feature_covariates$target
   curr_ids <- row.names(grna_odm@feature_covariates)
   curr_ids[curr_targets == "non-targeting"] <- "non-targeting"
@@ -46,6 +46,7 @@ to_pass_list <- list(response_odm = response_odm,
                      grna_odm = grna_odm,
                      response_grna_group_pairs = response_grna_group_pairs)
 if (!is.null(optional_args)) { # if there are optional arguments specified, add them to the list
+  optional_args <- strsplit(x = optional_args, split = ":") |> unlist()
   values_vect <- NULL
   names_vect <- NULL
   for (str in optional_args) {
