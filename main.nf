@@ -61,7 +61,7 @@ process obtain_pc_pairs {
   """
 }
 
-/*
+
 process run_method {
   debug true
 
@@ -134,4 +134,3 @@ workflow {
   raw_results = run_method.out.collect()
   combine_results(raw_results)
 }
-*/
