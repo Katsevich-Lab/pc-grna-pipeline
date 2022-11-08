@@ -11,7 +11,7 @@ datasets <- args[seq(3, length(args))] |> unique()
 out <- NULL
 for (i in seq(1, length(datasets))) {
   dataset_name <- datasets[i]
-  pos_control_df <- readRDS(paste0(sceptre2_dir, sub("/[^/]*$", "", dataset_name),
+  pos_control_df <- readRDS(paste0(sceptre2_dir, dataset_name,
                                    if (grouped) "/pos_control_pairs_grouped.rds" else  "/pos_control_pairs_single.rds"))
   my_idxs <- seq(1L, nrow(pos_control_df))
   if (trial) {
