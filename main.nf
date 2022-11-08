@@ -1,4 +1,3 @@
-nextflow.enable.dsl=1
 params.result_dir = "$PWD"
 params.result_file_name = "pc_results.rds"
 params.trial = "false"
