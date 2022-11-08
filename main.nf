@@ -48,15 +48,11 @@ process obtain_pc_pairs {
   queue "short.q"
   memory "2 GB"
 
-  //output:
-  //path 'dataset_names_raw.txt'
-
-  //"""
-  //get_pc_pairs.R ${params.trial} ${params.grouped} $data_list_str
-  //"""
+  output:
+  path 'dataset_names_raw.txt'
 
   """
-  echo ${params.trial} ${params.grouped} $data_list_str
+  get_pc_pairs.R ${params.trial} ${params.grouped} $data_list_str
   """
 }
 
