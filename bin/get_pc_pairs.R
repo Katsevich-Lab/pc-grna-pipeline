@@ -13,7 +13,7 @@ for (i in seq(1, length(datasets))) {
   dataset_name <- datasets[i]
   grna_dataset_name <- lowmoi::get_grna_dataset_name(dataset_name, "assignment")
   grna_odm <- lowmoi::load_dataset_modality(grna_dataset_name)
-  grna_feature_covariates <- grna_odm |> get_feature_covariates()
+  grna_feature_covariates <- grna_odm |> ondisc::get_feature_covariates()
   
   if (grouped) {
     ok_grna_groups <- grna_feature_covariates |>
