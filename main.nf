@@ -1,3 +1,4 @@
+nextflow.enable.dsl=1
 params.result_dir = "$PWD"
 params.result_file_name = "pc_results.rds"
 params.trial = "false"
@@ -48,15 +49,19 @@ process obtain_pc_pairs {
   queue "short.q"
   memory "2 GB"
 
-  output:
-  path 'dataset_names_raw.txt'
+  //output:
+  //path 'dataset_names_raw.txt'
+
+  //"""
+  //get_pc_pairs.R ${params.trial} ${params.grouped} $data_list_str
+  //"""
 
   """
-  get_pc_pairs.R ${params.trial} ${params.grouped} $data_list_str
+  echo ${params.trial} ${params.grouped} $data_list_str
   """
 }
 
-
+/*
 process run_method {
   debug true
 
@@ -129,3 +134,4 @@ workflow {
   raw_results = run_method.out.collect()
   combine_results(raw_results)
 }
+*/
