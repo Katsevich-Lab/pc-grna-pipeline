@@ -10,10 +10,10 @@ datasets <- args[seq(3, length(args))] |> unique()
 # loop over datasets, outputting the positive control pairs
 out <- NULL
 for (i in seq(1, length(datasets))) {
+  dataset_name <- datasets[i]
   grna_dataset_name <- lowmoi::get_grna_dataset_name(dataset_name, grna_modality)
   grna_odm <- lowmoi::load_dataset_modality(grna_dataset_name)
   grna_feature_covariates <- grna_odm |> get_feature_covariates()
-  dataset_name <- datasets[i]
   
   if (grouped) {
     ok_grna_groups <- grna_feature_covariates |>
