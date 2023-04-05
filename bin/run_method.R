@@ -22,8 +22,8 @@ library(lowmoi)
 response_odm <- load_dataset_modality(dataset_name)
 grna_dataset_name <- get_grna_dataset_name(dataset_name, grna_modality)
 grna_odm <- load_dataset_modality(grna_dataset_name)
-# update the gene-grna groups and grna ODM, if running a singleton experiment
 
+# update the gene-grna groups and grna ODM, if running a singleton experiment
 if (grouped) {
   response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/pos_control_pairs_grouped.rds"))
 } else {
