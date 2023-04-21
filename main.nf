@@ -94,6 +94,7 @@ workflow {
   
   dataset_names_raw_ch = obtain_pc_pairs.out
   dataset_names_raw_ch.view()
+  
   /*
   dataset_idx_pairs = dataset_names_raw_ch.splitText().map{it.trim().split(" ")}.map{[it[0], it[1]]}
   dataset_no_idx = dataset_idx_pairs.unique({it[0]}).map{[it[0], 0]}
