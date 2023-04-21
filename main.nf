@@ -47,7 +47,7 @@ process obtain_pc_pairs {
   path 'dataset_names_raw.txt'
 
   """
-  get_pc_pairs.R  ${params.trial} ${params.pairs_file} $data_list_str
+  get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
   """
 }
 
@@ -67,7 +67,7 @@ process run_method {
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
   """
-  run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} $opt_args
+  run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
   """
 }
 

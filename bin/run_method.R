@@ -8,7 +8,8 @@ idx <- as.integer(args[2])
 method_name <- args[3]
 grna_modality <- args[4]
 pairs_file <- args[5]
-if (length(args) >= 6) {
+trial <- as.logical(args[6])
+if (length(args) >= 7) {
   optional_args <- args[seq(6, length(args))]
 } else {
   optional_args <- NULL
@@ -31,6 +32,10 @@ if (idx > 0) {
   unique_grna_groups <- response_grna_group_pairs$grna_group |> unique()
   curr_grna_group <- as.character(unique_grna_groups[idx])
   response_grna_group_pairs <- response_grna_group_pairs |> dplyr::filter(grna_group == curr_grna_group)
+}
+
+if (trial && nrow(response_grna_group_pairs) >= 5) {
+  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::sample_n(5)
 }
 
 # add additional args
