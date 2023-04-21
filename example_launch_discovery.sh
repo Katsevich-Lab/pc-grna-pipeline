@@ -6,4 +6,4 @@ nextflow run $LOCAL_CODE_DIR"/pc-grna-pipeline/main.nf" \
  --result_dir $LOCAL_SCEPTRE2_DATA_DIR"/results/discovery_analyses" \
  --result_file_name "discovery_results_0423.rds" \
  --trial "false" \
- --discovery "true"
+ --pairs_file "tf_pairs_grouped.rds" # or trans_pairs_grouped.rds or pos_control_pairs_grouped.rds

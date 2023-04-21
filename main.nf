@@ -1,8 +1,3 @@
-params.result_dir = "$PWD"
-params.result_file_name = "pc_results.rds"
-params.trial = "false"
-params.grouped = "true"
-
 // STEP 0: Determine the dataset-method pairs; put the dataset method pairs into a map, and put the datasets into an array
 GroovyShell shell = new GroovyShell()
 evaluate(new File(params.data_method_pair_file))
@@ -52,27 +47,31 @@ process obtain_pc_pairs {
   path 'dataset_names_raw.txt'
 
   """
-  get_pc_pairs.R ${params.trial} ${params.grouped} $data_list_str
+  get_pc_pairs.R  ${params.trial} ${params.pairs_file} $data_list_str
   """
 }
 
 
 process run_method {
   debug true
-
-  queue "$queue"
-  memory "$ram GB"
-
+  
+  //queue "$queue"
+  //memory "$ram GB"
+  
   tag "$dataset+$method"
 
-  output:
-  file 'raw_result.rds'
+  //output:
+  //file 'raw_result.rds'
 
   input:
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
+  //"""
+  //run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} $opt_args
+  //"""
+  
   """
-  run_method.R  $dataset $idx $method ${params.grna_modality} ${params.grouped} $opt_args
+  echo $dataset $idx $method ${params.grna_modality} ${params.pairs_file} $opt_args
   """
 }
 
@@ -96,11 +95,11 @@ process combine_results {
 workflow {
   // step 0: get datasets and indexes
   obtain_pc_pairs()
-
+  
   dataset_names_raw_ch = obtain_pc_pairs.out
   dataset_idx_pairs = dataset_names_raw_ch.splitText().map{it.trim().split(" ")}.map{[it[0], it[1]]}
   dataset_no_idx = dataset_idx_pairs.unique({it[0]}).map{[it[0], 0]}
-
+  
   // step 1: combine with the methods
   data_method_pairs_indiv_tuples = dataset_idx_pairs.combine(data_method_pairs_ch_indiv, by: 0).map{
     [it[0], // dataset
@@ -120,11 +119,10 @@ workflow {
   }
 
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
-
+  
   // step 2: run method
   run_method(method_input)
-
-
+  
   // step 3: combine results
   raw_results = run_method.out.collect()
   combine_results(raw_results)

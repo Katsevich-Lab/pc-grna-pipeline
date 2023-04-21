@@ -7,7 +7,7 @@ dataset_name <- args[1]
 idx <- as.integer(args[2])
 method_name <- args[3]
 grna_modality <- args[4]
-grouped <- as.logical(args[5])
+pairs_file <- args[5]
 if (length(args) >= 6) {
   optional_args <- args[seq(6, length(args))]
 } else {
@@ -24,21 +24,13 @@ grna_dataset_name <- get_grna_dataset_name(dataset_name, grna_modality)
 grna_odm <- load_dataset_modality(grna_dataset_name)
 
 # update the gene-grna groups and grna ODM, if running a singleton experiment
-if (grouped) {
-  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/pos_control_pairs_grouped.rds"))
-} else {
-  response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/pos_control_pairs_single.rds"))
-  curr_targets <- grna_odm@feature_covariates$target
-  curr_ids <- row.names(grna_odm@feature_covariates)
-  curr_ids[curr_targets == "non-targeting"] <- "non-targeting"
-  grna_odm@feature_covariates$target <- curr_ids
-  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::rename("grna_group" = "grna_id")
-  row.names(grna_odm) <- NULL
-}
+response_grna_group_pairs <- readRDS(paste0(sceptre2_dir, dataset_name, "/", pairs_file))
 
 # if idx > 0, slice the response grna group pairs accordingly
 if (idx > 0) {
-  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::slice(idx)
+  unique_grna_groups <- response_grna_group_pairs$grna_group |> unique()
+  curr_grna_group <- as.character(unique_grna_groups[idx])
+  response_grna_group_pairs <- response_grna_group_pairs |> dplyr::filter(grna_group == curr_grna_group)
 }
 
 # add additional args
