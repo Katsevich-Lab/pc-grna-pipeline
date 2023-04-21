@@ -43,11 +43,15 @@ process obtain_pc_pairs {
   queue "short.q"
   memory "2 GB"
 
-  output:
-  path 'dataset_names_raw.txt'
+  //output:
+  //path 'dataset_names_raw.txt'
 
+  //"""
+  //get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
+  //"""
+  
   """
-  get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
+  echo ${params.trial} ${params.pairs_file} $data_list_str
   """
 }
 
@@ -92,10 +96,10 @@ workflow {
   // step 0: get datasets and indexes
   obtain_pc_pairs()
   
+  /*
   dataset_names_raw_ch = obtain_pc_pairs.out
   dataset_names_raw_ch.view()
   
-  /*
   dataset_idx_pairs = dataset_names_raw_ch.splitText().map{it.trim().split(" ")}.map{[it[0], it[1]]}
   dataset_no_idx = dataset_idx_pairs.unique({it[0]}).map{[it[0], 0]}
   

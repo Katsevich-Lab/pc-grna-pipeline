@@ -5,7 +5,7 @@ sceptre2_dir <- paste0(.get_config_path("LOCAL_SCEPTRE2_DATA_DIR"), "data/")
 args <- commandArgs(trailingOnly = TRUE)
 trial <- as.logical(args[1])
 pairs_to_analyze_file <- args[2]
-datasets <- args[seq(4, length(args))] |> unique()
+datasets <- args[seq(3, length(args))] |> unique()
 
 # loop over datasets, outputting the positive control pairs
 out <- NULL
