@@ -115,11 +115,14 @@ workflow {
   }
 
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
+  method_input.view()
   
+  /*
   // step 2: run method
   run_method(method_input)
   
   // step 3: combine results
   raw_results = run_method.out.collect()
   combine_results(raw_results)
+  */
 }
