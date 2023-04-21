@@ -43,15 +43,11 @@ process obtain_pc_pairs {
   queue "short.q"
   memory "2 GB"
 
-  //output:
-  //path 'dataset_names_raw.txt'
+  output:
+  path 'dataset_names_raw.txt'
 
-  //"""
-  //get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
-  //"""
-  
   """
-  echo ${params.trial} ${params.pairs_file} $data_list_str
+  get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
   """
 }
 
@@ -96,7 +92,6 @@ workflow {
   // step 0: get datasets and indexes
   obtain_pc_pairs()
   
-  /*
   dataset_names_raw_ch = obtain_pc_pairs.out
   dataset_names_raw_ch.view()
   
@@ -125,6 +120,7 @@ workflow {
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
   method_input.view()
   
+  /*
   // step 2: run method
   run_method(method_input)
   
