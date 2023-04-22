@@ -93,12 +93,10 @@ workflow {
   obtain_pc_pairs()
   
   dataset_names_raw_ch = obtain_pc_pairs.out
-  dataset_names_raw_ch.view()
   
   dataset_idx_pairs = dataset_names_raw_ch.splitText().map{it.trim().split(" ")}.map{[it[0], it[1]]}
   dataset_no_idx = dataset_idx_pairs.unique({it[0]}).map{[it[0], 0]}
   
-
   // step 1: combine with the methods
   data_method_pairs_indiv_tuples = dataset_idx_pairs.combine(data_method_pairs_ch_indiv, by: 0).map{
     [it[0], // dataset
@@ -118,7 +116,6 @@ workflow {
   }
 
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
-  method_input.view()
   
   // step 2: run method
   run_method(method_input)
