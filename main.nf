@@ -69,10 +69,6 @@ process run_method {
   """
   run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
   """
-  
-  """
-  echo $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
-  """
 }
 
 
