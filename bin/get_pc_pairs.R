@@ -11,7 +11,7 @@ datasets <- args[seq(3, length(args))] |> unique()
 out <- NULL
 for (i in seq(1, length(datasets))) {
   dataset_name <- datasets[i]
-  df <- readRDS(paste0(sceptre2_dir, dataset_name, "/tf_pairs_grouped.rds"))
+  df <- readRDS(paste0(sceptre2_dir, dataset_name, "/", pairs_to_analyze_file))
   n_grnas <- length(unique(df$grna_group))
   my_idxs <- seq(1L, n_grnas)
   out <- c(out, paste(dataset_name, if (trial) 1L else my_idxs))

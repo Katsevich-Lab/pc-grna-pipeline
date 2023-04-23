@@ -69,6 +69,10 @@ process run_method {
   """
   run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
   """
+  
+  """
+  echo $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
+  """
 }
 
 
@@ -116,7 +120,7 @@ workflow {
   }
 
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
-  
+
   // step 2: run method
   run_method(method_input)
   
