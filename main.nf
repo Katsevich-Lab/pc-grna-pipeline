@@ -122,9 +122,7 @@ workflow {
   // step 2: run method
   run_method(method_input)
   
-  /*
   // step 3: combine results
   raw_results = run_method.out.collect()
   combine_results(raw_results)
-  */
 }

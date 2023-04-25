@@ -37,6 +37,7 @@ if (idx > 0) {
 
 if (trial && nrow(response_grna_group_pairs) >= 5) {
   response_grna_group_pairs <- response_grna_group_pairs |> dplyr::sample_n(5)
+  response_odm <- response_odm[as.character(response_grna_group_pairs$response_id),]
 }
 
 # if the analysis is singleton (as opposed to grouped), update the grna odm and pairs to analyze data frame
