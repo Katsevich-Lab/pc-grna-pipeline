@@ -1,6 +1,8 @@
 // STEP 0: Determine the dataset-method pairs; put the dataset method pairs into a map, and put the datasets into an array
 GroovyShell shell = new GroovyShell()
-evaluate(new File(params.data_method_pair_file))
+File file = new File(params.data_method_pair_file)
+if (!file.exists()) throw new Exception("Data-method pair file does not exist.")
+evaluate(file)
 def data_method_pairs_list_indiv = []
 def data_method_pairs_list_grouped = []
 data_list_str = ""
@@ -45,7 +47,7 @@ process obtain_pc_pairs {
 
   output:
   path 'dataset_names_raw.txt'
-
+  
   """
   get_pc_pairs.R ${params.trial} ${params.pairs_file} $data_list_str
   """
@@ -67,7 +69,7 @@ process run_method {
   tuple val(dataset), val(idx), val(method), val(queue), val(ram), val(opt_args)
 
   """
-  run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} $opt_args
+  run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} ${params.grouped} $opt_args
   """
 }
 
@@ -114,13 +116,15 @@ workflow {
     get_matrix_entry(data_method_ram_matrix, row_names, col_names, it[0], it[2]), // RAM
     get_vector_entry(optional_args, col_names, it[2])] // optional args
   }
-
+  
   method_input = data_method_pairs_indiv_tuples.mix(data_method_pair_grouped_tuples)
-
+  
   // step 2: run method
   run_method(method_input)
   
+  /*
   // step 3: combine results
   raw_results = run_method.out.collect()
   combine_results(raw_results)
+  */
 }

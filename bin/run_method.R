@@ -9,8 +9,9 @@ method_name <- args[3]
 grna_modality <- args[4]
 pairs_file <- args[5]
 trial <- as.logical(args[6])
-if (length(args) >= 7) {
-  optional_args <- args[seq(6, length(args))]
+grouped <- as.logical(args[7])
+if (length(args) >= 8) {
+  optional_args <- args[seq(8, length(args))]
 } else {
   optional_args <- NULL
 }
@@ -36,6 +37,25 @@ if (idx > 0) {
 
 if (trial && nrow(response_grna_group_pairs) >= 5) {
   response_grna_group_pairs <- response_grna_group_pairs |> dplyr::sample_n(5)
+}
+
+# if the analysis is singleton (as opposed to grouped), update the grna odm and pairs to analyze data frame
+if (!grouped) {
+  grna_feature_df <- grna_odm |> get_feature_covariates()
+  grna_map_df <- data.frame(grna_id = rownames(grna_feature_df),
+                            grna_group = grna_feature_df$target) |>
+    dplyr::filter(grna_group %in% response_grna_group_pairs$grna_group)
+  # update the pairs to analyze
+  response_grna_group_pairs <- dplyr::inner_join(x = response_grna_group_pairs,
+                                                 y = grna_map_df,
+                                                 by = "grna_group",
+                                                 relationship = "many-to-many") |>
+    dplyr::select(response_id, grna_group = grna_id)
+  # update the gRNA groupings, putting each gRNA into a group of size 1
+  grna_feature_df$target <- ifelse(grna_feature_df$target == "non-targeting",
+                                   grna_feature_df$target,
+                                   rownames(grna_feature_df))
+  grna_odm@feature_covariates <- grna_feature_df
 }
 
 # add additional args
