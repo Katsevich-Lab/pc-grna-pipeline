@@ -40,8 +40,6 @@ def get_vector_entry(vector, col_names, my_col_name) {
 
 // PROCESS 1: obtain
 process obtain_pc_pairs {
-  debug true
-
   queue "short.q"
   memory "2 GB"
 
@@ -55,8 +53,6 @@ process obtain_pc_pairs {
 
 
 process run_method {
-  debug true
-  
   queue "$queue"
   memory "$ram GB"
   
