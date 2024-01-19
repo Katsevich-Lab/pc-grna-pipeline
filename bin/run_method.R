@@ -89,3 +89,6 @@ out <- result_df |>
 
 # save result
 saveRDS(object = out, file = "raw_result.rds")
+
+# print the current time
+print(Sys.time())

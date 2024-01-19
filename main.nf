@@ -66,8 +66,6 @@ process run_method {
 
   """
   run_method.R $dataset $idx $method ${params.grna_modality} ${params.pairs_file} ${params.trial} ${params.grouped} $opt_args
-  sleep 10
-  echo process complete
   """
 }
 
