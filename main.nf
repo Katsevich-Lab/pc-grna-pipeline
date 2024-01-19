@@ -53,7 +53,7 @@ process obtain_pc_pairs {
 
 
 process run_method {
-  queue "$queue"
+  // queue "$queue"
   memory "$ram GB"
   
   tag "$dataset+$method"
